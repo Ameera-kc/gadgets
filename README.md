@@ -25,7 +25,7 @@ Interactive Swagger and ReDoc documentation for easy exploration of API endpoint
 - Clone the repository
 
 ```
-git clone <repository_url>
+git clone https://github.com/aminakm123/swagger-django-crud.git
 cd swagger_django_crud
 ```
 - Install dependencies
