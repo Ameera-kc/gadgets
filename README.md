@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # swagger-django-crud
 **Product Management Crud API using Django**
 This project is a Product Management API built using Django and Django REST Framework. It provides an interface for managing products and their categories, along with an integrated Swagger-based API documentation.
@@ -47,3 +48,6 @@ python manage.py runserver
 
 - Swagger UI: http://127.0.0.1:8000/
 - ReDoc: http://127.0.0.1:8000/redoc/
+=======
+# gadgets
+>>>>>>> a6424292cb1a502a3099db8d180f4469c8dc4607
