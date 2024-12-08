@@ -13,7 +13,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['name','price','category','description','image']
-                
+
+
 
 class ProductListSerializer(serializers.ModelSerializer):
     category_name = serializers.ReadOnlyField(source='category.name')

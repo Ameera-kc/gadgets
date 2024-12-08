@@ -20,7 +20,7 @@ class CategoryAPI(ModelViewSet):
     
     @swagger_auto_schema(operation_description='Retrieve category details by ID')
     def retrieve(self, request, pk=None):
-        contract = get_object_or_404(Category, id=pk, active=True)
+        contract = get_object_or_404(Category, id=pk, is_deleted=False)
         serializer = CategorySerializer(contract)
         return Response(serializer.data)
 
@@ -34,7 +34,7 @@ class CategoryAPI(ModelViewSet):
 
     @swagger_auto_schema(request_body=CategorySerializer, operation_description='Update category details')
     def update(self, request, pk=None):
-        invoice = get_object_or_404(Category, id=pk, active=True)
+        invoice = get_object_or_404(Category, id=pk, is_deleted=False)
         serializer = CategorySerializer(invoice, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save(candidate=self.request.user)
@@ -43,7 +43,7 @@ class CategoryAPI(ModelViewSet):
 
     @swagger_auto_schema(operation_description='Deactivate category')
     def destroy(self, request, pk=None):
-        invoice = get_object_or_404(Category, id=pk, active=True)
+        invoice = get_object_or_404(Category, id=pk, is_deleted=False)
         invoice.active = False
         invoice.save()
         return Response({"message": "category deactivated successfully"}, status=200)
@@ -63,7 +63,7 @@ class ProductAPI(ModelViewSet):
     
     @swagger_auto_schema(operation_description='Retrieve Product details by ID')
     def retrieve(self, request, pk=None):
-        contract = get_object_or_404(Product, id=pk, active=True)
+        contract = get_object_or_404(Product, id=pk, is_deleted=False)
         serializer = ProductSerializer(contract)
         return Response(serializer.data)
 
@@ -77,7 +77,7 @@ class ProductAPI(ModelViewSet):
 
     @swagger_auto_schema(request_body=ProductSerializer, operation_description='Update Product details')
     def update(self, request, pk=None):
-        invoice = get_object_or_404(Product, id=pk, active=True)
+        invoice = get_object_or_404(Product, id=pk, is_deleted=False)
         serializer = ProductSerializer(invoice, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save(candidate=self.request.user)
@@ -86,7 +86,7 @@ class ProductAPI(ModelViewSet):
 
     @swagger_auto_schema(operation_description='Deactivate Product')
     def destroy(self, request, pk=None):
-        invoice = get_object_or_404(Product, id=pk, active=True)
+        invoice = get_object_or_404(Product, id=pk, is_deleted=False)
         invoice.active = False
         invoice.save()
         return Response({"message": "Product deactivated successfully"}, status=200)

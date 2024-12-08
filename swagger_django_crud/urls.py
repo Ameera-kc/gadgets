@@ -39,7 +39,7 @@ web_schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
-    patterns=[path('api/v1/product/', include('api.v1.product_api.urls'))],
+    patterns=[path('api/v1/', include('api.v1.product_api.urls'))],
     url='http://127.0.0.1:8000/'
 )
 
@@ -49,7 +49,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('product-docs/', web_schema_view.with_ui('swagger', cache_timeout=0), name='finance-swagger-ui'),
     
-    path('api/v1/product/', include(('api.v1.product_api.urls'),namespace='product_api')),
+    path('api/v1/', include(('api.v1.product_api.urls'),namespace='product_api')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
